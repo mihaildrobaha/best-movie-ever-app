@@ -7,10 +7,13 @@
   [fillLikeButton]="favorite ? movie.id === favorite.id : false"
 >
 </app-movie-card>
-<app-favorite-movie
-  *ngIf="favorite"
-  [movie]="favorite"
-  [fillLikeButton]="true"
-  (onOpenDialogFromFavorite)="openDialogFromFavorite($event)"
->
-</app-favorite-movie>
+
+<div class="card-wrapper">
+  <app-favorite-movie
+    *ngIf="favorite"
+    [movie]="favorite"
+    [fillLikeButton]="true"
+    (onOpenDialogFromFavorite)="openDialogFromFavorite($event)"
+  >
+  </app-favorite-movie>
+</div>
