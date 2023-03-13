@@ -1,0 +1,7 @@
+<h2 *ngIf="movie" class="header">Самый лучший фильм</h2>
+<app-movie-card
+  [movie]="movie"
+  [fillLikeButton]="fillLikeButton"
+  (onClickToLike)="removeFromFavorites($event)"
+  (onOpenDialog)="openDialog($event)"
+></app-movie-card>

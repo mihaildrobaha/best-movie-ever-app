@@ -1,0 +1,38 @@
+<mat-card *ngIf="movie" class="movie-card">
+  <img
+    (click)="openDialog()"
+    class="movie-card__image"
+    mat-card-image
+    [src]="imgUrl"
+    alt="Poster"
+  />
+  <mat-card-header class="movie-card__header">
+    <mat-card-title class="movie-card__title" (click)="openDialog()">{{
+      movie.name
+    }}</mat-card-title>
+    <mat-card-subtitle class="movie-card__subtitle">{{
+      movie.genre | genre
+    }}</mat-card-subtitle>
+    <mat-card-subtitle class="movie-card__subtitle">{{
+      movie.year
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <button
+    *ngIf="!disabledLikeButton"
+    [ngClass]="{
+      'movie-card__like-active': !disabledLikeButton && fillLikeButton
+    }"
+    (click)="clickToLike()"
+    class="movie-card__like"
+    mat-icon-button
+    color="basic"
+  >
+    <span *ngIf="!fillLikeButton; else favorite" class="material-icons">
+      favorite_border
+    </span>
+  </button>
+</mat-card>
+
+<ng-template #favorite>
+  <span class="material-icons">favorite</span>
+</ng-template>

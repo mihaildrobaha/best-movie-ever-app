@@ -1,0 +1,52 @@
+<mat-card *ngIf="movie" class="details-card">
+  <img class="details-card__image" mat-card-image [src]="imgUrl" alt="Poster" />
+  <mat-card-header class="details-card__header">
+    <mat-card-title class="details-card__title">{{
+      movie.name
+    }}</mat-card-title>
+    <mat-card-subtitle class="details-card__subtitle">{{
+      movie.genre | genre
+    }}</mat-card-subtitle>
+    <mat-card-subtitle class="details-card__subtitle">{{
+      movie.year
+    }}</mat-card-subtitle>
+    <mat-card-subtitle class="details-card__subtitle desc">{{
+      movie.description
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-dialog-actions class="details-card__buttons">
+    <button
+      *ngIf="!id; else clicked"
+      mat-button
+      mat-dialog-close
+      color="primary"
+      class="details-card__button"
+      tabindex="-1"
+      (click)="addToFavorite()"
+    >
+      Выбрать лучшим фильмом
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      color="accent"
+      class="details-card__button"
+      tabindex="-1"
+    >
+      Закрыть
+    </button>
+  </mat-dialog-actions>
+</mat-card>
+
+<ng-template #clicked>
+  <button
+    mat-button
+    mat-dialog-close
+    color="warn"
+    class="details-card__button"
+    tabindex="-1"
+    (click)="removeFromFavorite()"
+  >
+    Убрать из лучших фильмов
+  </button>
+</ng-template>

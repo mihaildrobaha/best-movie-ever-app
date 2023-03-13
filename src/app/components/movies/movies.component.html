@@ -1,0 +1,16 @@
+<app-movie-card
+  *ngFor="let movie of movies"
+  [movie]="movie"
+  (onClickToLike)="clickToLike($event)"
+  (onOpenDialog)="openDialog($event)"
+  [disabledLikeButton]="favorite ? movie.id !== favorite.id : false"
+  [fillLikeButton]="favorite ? movie.id === favorite.id : false"
+>
+</app-movie-card>
+<app-favorite-movie
+  *ngIf="favorite"
+  [movie]="favorite"
+  [fillLikeButton]="true"
+  (onOpenDialogFromFavorite)="openDialogFromFavorite($event)"
+>
+</app-favorite-movie>
