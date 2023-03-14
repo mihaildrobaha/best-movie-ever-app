@@ -57,3 +57,35 @@
     letter-spacing: 0.5px;
   }
 }
+
+@media screen and (max-width: 947px) {
+  .details-card {
+    width: 230px;
+    height: 500px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details-card__header {
+    padding: 5px;
+    text-align: center;
+  }
+
+  .details-card__title {
+    height: 25px;
+    overflow-y: auto;
+  }
+
+  .details-card__subtitle {
+    width: 220px;
+    text-align: center;
+  }
+
+  .details-card__buttons {
+    gap: 0px;
+    position: absolute;
+    flex-direction: column;
+    right: 1px;
+    bottom: 0px;
+  }
+}

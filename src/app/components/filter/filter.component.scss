@@ -2,3 +2,14 @@
   display: flex;
   gap: 10px;
 }
+
+@media screen and (max-width: 480px) {
+  .filter-wrapper {
+    gap: 0px;
+    justify-content: center;
+  }
+
+  mat-form-field {
+    height: 70px;
+  }
+}
