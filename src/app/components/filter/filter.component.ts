@@ -9,7 +9,6 @@ import { FilterService } from 'src/app/services/filter.service';
 })
 export class FilterComponent implements OnInit {
   public movieName: string = '';
-
   public movies: IMovie[] = [];
   public filteredMovies: IMovie[] = [];
   public genres: Array<number> = [-1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -30,9 +29,9 @@ export class FilterComponent implements OnInit {
     if (this.movieName === '') {
       return this.movies;
     } else {
-      return this.movies.filter((movie: IMovie) =>
-        movie.name.toLowerCase().includes(this.movieName.toLowerCase())
-      );
+      return this.movies.filter((movie: IMovie) => {
+        return movie.name.toLowerCase().includes(this.movieName.toLowerCase());
+      });
     }
   }
 
@@ -46,9 +45,13 @@ export class FilterComponent implements OnInit {
   }
 
   public filter(): void {
-    const filteredArray = this.filterByTitle().filter((movie: IMovie) =>
-      this.filterByGenre().includes(movie)
-    );
-    this.filterService.setFilteredMovies(filteredArray);
+    if (this.selectedGenre === null) {
+      this.filterService.setFilteredMovies(this.filterByTitle());
+    } else {
+      const filteredArray = this.filterByTitle().filter((movie: IMovie) =>
+        this.filterByGenre().includes(movie)
+      );
+      this.filterService.setFilteredMovies(filteredArray);
+    }
   }
 }
